@@ -12,7 +12,7 @@ const Hero = () => {
       <div className="absolute inset-0">
         <img
           src={heroDhaba}
-          alt="Panjabrao Patil Varhadi Dhaba outdoor dining"
+          alt="Punjabrao Patil Varhadi Dhaba outdoor dining"
           className="w-full h-full object-cover"
           loading="eager"
           decoding="sync"
@@ -39,7 +39,7 @@ const Hero = () => {
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in text-foreground"
             style={{ animationDelay: '0.2s' }}
           >
-            Panjabrao Patil
+            Punjabrao Patil
             <span className="block text-primary mt-2">Varhadi Dhaba</span>
           </h1>
 

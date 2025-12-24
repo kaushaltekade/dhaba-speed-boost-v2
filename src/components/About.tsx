@@ -60,7 +60,7 @@ const About = () => {
                 The Authentic Taste of Vidarbha
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                Panjabrao Patil Varhadi Dhaba brings you the true essence of Maharashtrian 
+                Punjabrao Patil Varhadi Dhaba brings you the true essence of Maharashtrian 
                 dhaba-style cuisine. Our kitchen is filled with the aroma of traditional 
                 Varhadi spices, serving spicy gravies, fresh bhakri, and hearty non-veg 
                 & veg dishes that remind you of home.

@@ -36,11 +36,11 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-lg">PP</span>
+            <div className="great-logo">
+              <img src="/panjabrao-logo.png" alt="PP" className="h-12 w-12 md:h-14 md:w-14 object-contain " />            
             </div>
             <div className="hidden sm:block">
-              <div className="font-display font-bold text-foreground">Panjabrao Patil</div>
+              <div className="font-display font-bold text-foreground">Punjabrao Patil</div>
               <div className="text-xs text-primary">Varhadi Dhaba</div>
             </div>
           </a>
