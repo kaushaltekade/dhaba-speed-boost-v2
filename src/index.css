@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Dhaba Design System - Warm, Authentic, Inviting */
 
@@ -66,13 +66,13 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
 }
 
 @layer components {
   .font-display {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Yeseva One', serif;
   }
 
   .hero-overlay {

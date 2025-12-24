@@ -1,18 +1,56 @@
+import { useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import LazySection from './LazySection';
 import OptimizedImage from './OptimizedImage';
-import heroDhaba from '@/assets/hero-dhaba.jpg';
-import dhabaAmbience from '@/assets/dhaba-ambience.jpg';
-import curryDish from '@/assets/curry-dish.jpg';
-import accompaniments from '@/assets/accompaniments.jpg';
+
+// Import all gallery images
+import gallery1 from '@/assets/gallery/gallery-1.jpg';
+import gallery2 from '@/assets/gallery/gallery-2.jpg';
+import gallery3 from '@/assets/gallery/gallery-3.jpg';
+import gallery4 from '@/assets/gallery/gallery-4.jpg';
+import gallery5 from '@/assets/gallery/gallery-5.jpg';
+import gallery6 from '@/assets/gallery/gallery-6.jpg';
+import gallery7 from '@/assets/gallery/gallery-7.jpg';
+import gallery8 from '@/assets/gallery/gallery-8.jpg';
+import gallery9 from '@/assets/gallery/gallery-9.jpg';
+import gallery10 from '@/assets/gallery/gallery-10.jpg';
+import gallery11 from '@/assets/gallery/gallery-11.jpg';
+import gallery12 from '@/assets/gallery/gallery-12.jpg';
+import gallery13 from '@/assets/gallery/gallery-13.jpg';
+import gallery15 from '@/assets/gallery/gallery-15.jpg';
+import gallery16 from '@/assets/gallery/gallery-16.jpg';
 
 const galleryImages = [
-  { src: heroDhaba, alt: 'Outdoor Dining Area', title: 'Open Air Seating' },
-  { src: dhabaAmbience, alt: 'Indoor Dining', title: 'Cozy Indoor Space' },
-  { src: curryDish, alt: 'Signature Curry', title: 'Our Signature Curry' },
-  { src: accompaniments, alt: 'Fresh Accompaniments', title: 'Fresh Sides' },
+  { src: gallery1, alt: 'Dhaba Food 1' },
+  { src: gallery2, alt: 'Dhaba Food 2' },
+  { src: gallery3, alt: 'Dhaba Food 3' },
+  { src: gallery4, alt: 'Dhaba Food 4' },
+  { src: gallery5, alt: 'Dhaba Food 5' },
+  { src: gallery6, alt: 'Dhaba Food 6' },
+  { src: gallery7, alt: 'Dhaba Food 7' },
+  { src: gallery8, alt: 'Dhaba Food 8' },
+  { src: gallery9, alt: 'Dhaba Food 9' },
+  { src: gallery10, alt: 'Dhaba Food 10' },
+  { src: gallery11, alt: 'Dhaba Food 11' },
+  { src: gallery12, alt: 'Dhaba Food 12' },
+  { src: gallery13, alt: 'Dhaba Food 13' },
+  { src: gallery15, alt: 'Dhaba Food 15' },
+  { src: gallery16, alt: 'Dhaba Food 16' },
 ];
 
 const Gallery = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 320;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id="gallery" className="py-20 bg-secondary/50">
       <div className="container mx-auto px-4">
@@ -28,19 +66,46 @@ const Gallery = () => {
           </div>
         </LazySection>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {galleryImages.map((image, index) => (
-            <LazySection key={index} delay={index * 50}>
-              <div className="relative rounded-xl overflow-hidden group">
-                <OptimizedImage src={image.src} alt={image.alt} className="h-[200px] md:h-[250px]" aspectRatio="" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-4 left-4">
-                    <h3 className="font-display font-bold text-foreground">{image.title}</h3>
-                  </div>
-                </div>
+        {/* Scrollable Gallery with Navigation */}
+        <div className="relative">
+          {/* Left Arrow */}
+          <button
+            onClick={() => scroll('left')}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 hover:bg-background p-3 rounded-full shadow-lg transition-all -translate-x-4 md:translate-x-0"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft className="w-6 h-6 text-foreground" />
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            onClick={() => scroll('right')}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 hover:bg-background p-3 rounded-full shadow-lg transition-all translate-x-4 md:translate-x-0"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="w-6 h-6 text-foreground" />
+          </button>
+
+          {/* Scrollable Container */}
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {galleryImages.map((image, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-[280px] md:w-[320px] rounded-xl overflow-hidden group"
+              >
+                <OptimizedImage 
+                  src={image.src} 
+                  alt={image.alt} 
+                  className="h-[200px] md:h-[240px] group-hover:scale-105 transition-transform duration-300" 
+                  aspectRatio="" 
+                />
               </div>
-            </LazySection>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
