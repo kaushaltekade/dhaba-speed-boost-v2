@@ -1,6 +1,6 @@
 import { MapPin, Clock, Star } from 'lucide-react';
 import { Button } from './ui/button';
-import heroDhaba from '@/assets/hero-dhaba.jpg';
+import heroDhaba from '@/assets/hero-dhaba.webp';
 
 const Hero = () => {
   return (

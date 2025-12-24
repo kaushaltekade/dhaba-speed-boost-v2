@@ -37,7 +37,7 @@ const Navbar = () => {
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3">
             <div className="great-logo">
-              <img src="/panjabrao-logo.png" alt="PP" className="h-12 w-12 md:h-14 md:w-14 object-contain " />            
+              <img src="/panjabrao-logo.webp" alt="PP" className="h-12 w-12 md:h-14 md:w-14 object-contain " />            
             </div>
             <div className="hidden sm:block">
               <div className="font-display font-bold text-foreground">Punjabrao Patil</div>

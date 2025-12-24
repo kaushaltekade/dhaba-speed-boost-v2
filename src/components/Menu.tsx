@@ -1,8 +1,8 @@
 import { Flame } from 'lucide-react';
 import LazySection from './LazySection';
 import OptimizedImage from './OptimizedImage';
-import curryDish from '@/assets/curry-dish.jpg';
-import accompaniments from '@/assets/accompaniments.jpg';
+import curryDish from '@/assets/curry-dish.webp';
+import accompaniments from '@/assets/accompaniments.webp';
 
 const menuCategories = [
   {

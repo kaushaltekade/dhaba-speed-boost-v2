@@ -1,7 +1,7 @@
 import { Utensils, Heart, Users, Award } from 'lucide-react';
 import LazySection from './LazySection';
 import OptimizedImage from './OptimizedImage';
-import dhabaAmbience from '@/assets/dhaba-ambience.jpg';
+import dhabaAmbience from '@/assets/dhaba-ambience.webp';
 
 const features = [
   {

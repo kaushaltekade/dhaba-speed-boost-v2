@@ -4,21 +4,21 @@ import LazySection from './LazySection';
 import OptimizedImage from './OptimizedImage';
 
 // Import all gallery images
-import gallery1 from '@/assets/gallery/gallery-1.jpg';
-import gallery2 from '@/assets/gallery/gallery-2.jpg';
-import gallery3 from '@/assets/gallery/gallery-3.jpg';
-import gallery4 from '@/assets/gallery/gallery-4.jpg';
-import gallery5 from '@/assets/gallery/gallery-5.jpg';
-import gallery6 from '@/assets/gallery/gallery-6.jpg';
-import gallery7 from '@/assets/gallery/gallery-7.jpg';
-import gallery8 from '@/assets/gallery/gallery-8.jpg';
-import gallery9 from '@/assets/gallery/gallery-9.jpg';
-import gallery10 from '@/assets/gallery/gallery-10.jpg';
-import gallery11 from '@/assets/gallery/gallery-11.jpg';
-import gallery12 from '@/assets/gallery/gallery-12.jpg';
-import gallery13 from '@/assets/gallery/gallery-13.jpg';
-import gallery15 from '@/assets/gallery/gallery-15.jpg';
-import gallery16 from '@/assets/gallery/gallery-16.jpg';
+import gallery1 from '@/assets/gallery/gallery-1.webp';
+import gallery2 from '@/assets/gallery/gallery-2.webp';
+import gallery3 from '@/assets/gallery/gallery-3.webp';
+import gallery4 from '@/assets/gallery/gallery-4.webp';
+import gallery5 from '@/assets/gallery/gallery-5.webp';
+import gallery6 from '@/assets/gallery/gallery-6.webp';
+import gallery7 from '@/assets/gallery/gallery-7.webp';
+import gallery8 from '@/assets/gallery/gallery-8.webp';
+import gallery9 from '@/assets/gallery/gallery-9.webp';
+import gallery10 from '@/assets/gallery/gallery-10.webp';
+import gallery11 from '@/assets/gallery/gallery-11.webp';
+import gallery12 from '@/assets/gallery/gallery-12.webp';
+import gallery13 from '@/assets/gallery/gallery-13.webp';
+import gallery15 from '@/assets/gallery/gallery-15.webp';
+import gallery16 from '@/assets/gallery/gallery-16.webp';
 
 const galleryImages = [
   { src: gallery1, alt: 'Dhaba Food 1' },
