@@ -46,7 +46,7 @@ const AmbienceSection = () => {
                             className="absolute top-0 right-0 w-4/5 h-3/5 rounded-2xl overflow-hidden shadow-2xl z-10"
                         >
                             <img
-                                src="/src/assets/dhaba-ambience.webp"
+                                src="/images/gallery/dhaba-ambience.webp"
                                 alt="Main Ambience"
                                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                             />
@@ -61,7 +61,7 @@ const AmbienceSection = () => {
                             className="absolute bottom-0 left-0 w-3/5 h-2/5 rounded-2xl overflow-hidden shadow-2xl border-4 border-dhaba-dark z-20"
                         >
                             <img
-                                src="/src/assets/indoor-dining.webp"
+                                src="/images/gallery/indoor-dining.webp"
                                 alt="Indoor Dining"
                                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                             />

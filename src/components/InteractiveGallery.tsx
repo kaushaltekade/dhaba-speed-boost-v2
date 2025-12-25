@@ -13,21 +13,21 @@ const InteractiveGallery = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const images = [
-        "/src/assets/gallery/gallery-1.webp",
-        "/src/assets/gallery/gallery-2.webp",
-        "/src/assets/gallery/gallery-3.webp",
-        "/src/assets/gallery/gallery-4.webp",
-        "/src/assets/gallery/gallery-5.webp",
-        "/src/assets/gallery/gallery-6.webp",
-        "/src/assets/gallery/gallery-7.webp",
-        "/src/assets/gallery/gallery-8.webp",
-        "/src/assets/gallery/gallery-9.webp",
-        "/src/assets/gallery/gallery-10.webp",
-        "/src/assets/gallery/gallery-11.webp",
-        "/src/assets/gallery/gallery-12.webp",
-        "/src/assets/gallery/gallery-13.webp",
-        "/src/assets/gallery/gallery-15.webp",
-        "/src/assets/gallery/gallery-16.webp",
+        "/images/gallery/gallery-1.webp",
+        "/images/gallery/gallery-2.webp",
+        "/images/gallery/gallery-3.webp",
+        "/images/gallery/gallery-4.webp",
+        "/images/gallery/gallery-5.webp",
+        "/images/gallery/gallery-6.webp",
+        "/images/gallery/gallery-7.webp",
+        "/images/gallery/gallery-8.webp",
+        "/images/gallery/gallery-9.webp",
+        "/images/gallery/gallery-10.webp",
+        "/images/gallery/gallery-11.webp",
+        "/images/gallery/gallery-12.webp",
+        "/images/gallery/gallery-13.webp",
+        "/images/gallery/gallery-15.webp",
+        "/images/gallery/gallery-16.webp",
         // Add duplicate or more images if available for a full feel
     ];
 
@@ -54,7 +54,7 @@ const InteractiveGallery = () => {
                                 whileTap={{ scale: 0.95 }}
                                 className="hidden md:block px-6 py-3 border border-dhaba-orange text-dhaba-orange rounded-full hover:bg-dhaba-orange hover:text-white transition-colors"
                             >
-                                View All Photos ({images.length})
+                                View All Photos
                             </motion.button>
                         </DialogTrigger>
                         <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-dhaba-dark border-white/10 p-0">

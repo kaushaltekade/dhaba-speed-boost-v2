@@ -15,7 +15,7 @@ const HeroSection = () => {
             >
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-dhaba-dark z-10" />
                 <img
-                    src="/src/assets/hero-dhaba.webp"
+                    src="/images/gallery/hero-dhaba.webp"
                     alt="Authentic Dhaba Atmosphere"
                     className="w-full h-full object-cover scale-110" // scale-110 to avoid whitespace on parallax
                 />

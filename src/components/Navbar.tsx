@@ -60,7 +60,7 @@ const Navbar = () => {
           >
             {/* Using text logo if image fails or for better SEO, but trying image first if available */}
             <img
-              src="/src/assets/logo.webp"
+              src="/images/gallery/logo.webp"
               alt="Panjabrao Dhaba"
               className="h-10 w-auto object-contain"
               width="45"
