@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&family=Poppins:wght@300;400;500;600;700&display=swap');
+/* Developed by koushaltekade89@gmail.com */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Dhaba Design System - Warm, Authentic, Inviting */
 
@@ -44,11 +45,11 @@
     --dhaba-brown: 25 40% 20%;
     --dhaba-cream: 35 40% 95%;
     --dhaba-dark: 30 20% 7%;
-    
+
     /* Gradients */
     --gradient-warm: linear-gradient(135deg, hsl(35 100% 50%) 0%, hsl(25 90% 45%) 100%);
     --gradient-dark: linear-gradient(180deg, hsl(30 20% 7%) 0%, hsl(30 15% 12%) 100%);
-    
+
     /* Shadows */
     --shadow-warm: 0 10px 40px -10px hsl(35 100% 50% / 0.3);
     --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
@@ -62,11 +63,29 @@
 
   html {
     scroll-behavior: smooth;
+    font-size: 90%;
+    /* Simulating 90% zoom level as requested */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
   }
 }
 
@@ -76,12 +95,10 @@
   }
 
   .hero-overlay {
-    background: linear-gradient(
-      180deg,
-      hsl(30 20% 7% / 0.4) 0%,
-      hsl(30 20% 7% / 0.7) 50%,
-      hsl(30 20% 7% / 0.9) 100%
-    );
+    background: linear-gradient(180deg,
+        hsl(30 20% 7% / 0.4) 0%,
+        hsl(30 20% 7% / 0.7) 50%,
+        hsl(30 20% 7% / 0.9) 100%);
   }
 
   .card-hover {
@@ -126,6 +143,7 @@
       opacity: 0;
       transform: translateY(10px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -137,6 +155,7 @@
       opacity: 0;
       transform: translateY(30px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -148,6 +167,7 @@
       opacity: 0;
       transform: scale(1.02);
     }
+
     to {
       opacity: 1;
       transform: scale(1);

@@ -1,112 +1,137 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
-import { Button } from './ui/button';
-
-const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#menu', label: 'Menu' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#locations', label: 'Locations' },
-  { href: '#contact', label: 'Contact' },
-];
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      // Determine if scrolled (for glass effect)
+      setIsScrolled(currentScrollY > 50);
+
+      // Determine visibility (hide on scroll down, show on scroll up)
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Menu", path: "#menu" },
+    { name: "Ambience", path: "#ambience" },
+    { name: "Gallery", path: "#gallery" },
+    { name: "Contact", path: "#contact" },
+  ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-background/95 backdrop-blur-md shadow-lg' 
-          : 'bg-transparent'
-      }`}
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{
+        y: isVisible ? 0 : -100,
+        backgroundColor: isScrolled ? "rgba(30, 20, 10, 0.8)" : "transparent",
+        backdropFilter: isScrolled ? "blur(12px)" : "none",
+        boxShadow: isScrolled ? "0 4px 30px rgba(0, 0, 0, 0.1)" : "none",
+      }}
+      transition={{ duration: 0.3 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${isScrolled ? "border-white/10" : "border-transparent"
+        }`}
     >
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a href="#home" className="flex items-center gap-3">
-            <div className="great-logo">
-              <img src="/panjabrao-logo.webp" alt="PP" className="h-12 w-12 md:h-14 md:w-14 object-contain " />            
-            </div>
-            <div className="hidden sm:block">
-              <div className="font-display font-bold text-foreground">Punjabrao Patil</div>
-              <div className="text-xs text-primary">Varhadi Dhaba</div>
-            </div>
-          </a>
-
-          {/* Desktop Nav */}
-          <ul className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          {/* CTA Button */}
-          <div className="hidden lg:block">
-            <Button asChild variant="default" size="sm">
-              <a href="tel:+919545665544" className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                Call Now
-              </a>
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-foreground"
-            aria-label="Toggle menu"
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 group">
+          <motion.div
+            whileHover={{ rotate: 10, scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+            {/* Using text logo if image fails or for better SEO, but trying image first if available */}
+            <img
+              src="/src/assets/logo.webp"
+              alt="Panjabrao Dhaba"
+              className="h-10 w-auto object-contain"
+              width="45"
+              height="45"
+            />
+          </motion.div>
+          <span className="font-display text-xl md:text-2xl text-dhaba-orange font-bold tracking-wider group-hover:text-dhaba-amber transition-colors">
+            Panjabrao Patil Varhadi Dhaba
+          </span>
+        </Link>
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.path}
+              className="text-white/90 hover:text-dhaba-orange font-medium text-sm uppercase tracking-wide transition-all relative group"
+            >
+              {link.name}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-dhaba-orange transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-dhaba-orange text-white px-6 py-2 rounded-full font-medium hover:bg-dhaba-amber transition-colors shadow-lg shadow-dhaba-orange/20 cursor-pointer"
+          >
+            Book a Table
+          </motion.a>
         </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-lg border-t border-border">
-            <ul className="py-4">
+        {/* Mobile Toggle */}
+        <button
+          className="md:hidden text-white"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-dhaba-dark/95 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+          >
+            <div className="flex flex-col p-6 gap-4">
               {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block px-6 py-3 text-foreground hover:text-primary hover:bg-secondary/50 transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
+                <a
+                  key={link.name}
+                  href={link.path}
+                  className="text-xl font-display text-white/90 hover:text-dhaba-orange"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
               ))}
-              <li className="px-4 pt-4">
-                <Button asChild className="w-full">
-                  <a href="tel:+919545665544" className="flex items-center justify-center gap-2">
-                    <Phone className="h-4 w-4" />
-                    Call Now
-                  </a>
-                </Button>
-              </li>
-            </ul>
-          </div>
+              <button className="bg-dhaba-orange text-white w-full py-3 rounded-lg font-bold mt-4">
+                Book a Table
+              </button>
+            </div>
+          </motion.div>
         )}
-      </nav>
-    </header>
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 
