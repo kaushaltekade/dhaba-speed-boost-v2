@@ -102,7 +102,7 @@ const InteractiveGallery = () => {
                     {marqueeImages.map((src, index) => (
                         <div
                             key={index}
-                            className="relative h-[250px] w-[350px] md:h-[400px] md:w-[600px] shrink-0 rounded-2xl overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105"
+                            className="relative h-[250px] w-[350px] md:h-[400px] md:w-[600px] shrink-0 rounded-2xl overflow-hidden shadow-2xl grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-500 hover:scale-105"
                         >
                             <img
                                 src={src}
