@@ -68,11 +68,7 @@ const AmbienceSection = () => {
                         </motion.div>
 
                         {/* Accent Elements */}
-                        <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                            className="absolute top-1/2 left-10 w-24 h-24 border border-dhaba-orange/20 rounded-full z-0 border-dashed"
-                        />
+
                     </div>
                 </div>
             </div>
