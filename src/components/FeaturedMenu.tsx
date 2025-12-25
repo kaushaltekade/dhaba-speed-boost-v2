@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const FeaturedMenu = () => {
+    const [activeCategory, setActiveCategory] = useState("All");
+
     const menuCategories = [
         {
             title: "Non-Veg Specialties",
+            category: "Non-Veg",
             icon: "🍗",
             items: [
                 { name: "Varhadi Chicken", desc: "Signature spicy chicken with traditional spices" },
@@ -16,6 +20,7 @@ const FeaturedMenu = () => {
         },
         {
             title: "Vegetarian Delights",
+            category: "Veg",
             icon: "🥗",
             items: [
                 { name: "Veg Curry", desc: "Mixed vegetables in traditional gravy" },
@@ -26,6 +31,7 @@ const FeaturedMenu = () => {
         },
         {
             title: "Breads & Rice",
+            category: "Sides",
             icon: "🍞",
             items: [
                 { name: "Bhakri", desc: "Traditional jowar/bajra flatbread" },
@@ -36,6 +42,7 @@ const FeaturedMenu = () => {
         },
         {
             title: "Special Combos",
+            category: "Combos",
             icon: "🍽️",
             items: [
                 { name: "Dhaba Special Thali", desc: "Complete meal with curry, dal, rice, bhakri & sides" },
@@ -44,6 +51,14 @@ const FeaturedMenu = () => {
             ]
         }
     ];
+
+    const allCategories = ["All", ...menuCategories.map(c => c.category)];
+    const activeCategoryData = menuCategories.find(c => c.category === activeCategory);
+
+    // If "All" is selected, we show all categories. If a specific category is selected, we show only that one.
+    const filteredCategories = activeCategory === "All"
+        ? menuCategories
+        : activeCategoryData ? [activeCategoryData] : [];
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -67,16 +82,35 @@ const FeaturedMenu = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="text-center mb-12"
                 >
                     <span className="text-dhaba-orange font-semibold uppercase tracking-widest">Taste of Tradition</span>
                     <h2 className="font-display text-4xl md:text-5xl text-white mt-2">Our Menu</h2>
                 </motion.div>
 
+                {/* Filter Buttons */}
+                <div className="flex flex-wrap justify-center gap-4 mb-16">
+                    {["All", "Non-Veg", "Veg", "Sides", "Combos"].map((category) => (
+                        <button
+                            key={category}
+                            onClick={() => setActiveCategory(category)}
+                            className={`px-6 py-2 rounded-full border transition-all duration-300 ${activeCategory === category
+                                ? "bg-dhaba-orange border-dhaba-orange text-white"
+                                : "border-white/20 text-white/60 hover:border-dhaba-orange/50 hover:text-white"
+                                }`}
+                        >
+                            {category === "Non-Veg" ? "Non-Veg Specialties" :
+                                category === "Veg" ? "Vegetarian" :
+                                    category === "Combos" ? "Special Combos" :
+                                        category}
+                        </button>
+                    ))}
+                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    {menuCategories.map((category, idx) => (
+                    {filteredCategories.map((category, idx) => (
                         <motion.div
-                            key={idx}
+                            key={category.title}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}

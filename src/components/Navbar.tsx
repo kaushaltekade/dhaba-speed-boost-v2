@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import MagneticButton from "./MagneticButton";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -84,14 +85,12 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-dhaba-orange transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
-          <motion.a
+          <MagneticButton
             href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-dhaba-orange text-white px-6 py-2 rounded-full font-medium hover:bg-dhaba-amber transition-colors shadow-lg shadow-dhaba-orange/20 cursor-pointer"
+            className="bg-dhaba-orange text-white px-6 py-2 rounded-full font-medium hover:bg-dhaba-amber transition-colors shadow-lg shadow-dhaba-orange/20"
           >
             Book a Table
-          </motion.a>
+          </MagneticButton>
         </div>
 
         {/* Mobile Toggle */}

@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import MagneticButton from "./MagneticButton";
 
 const HeroSection = () => {
     const { scrollY } = useScroll();
@@ -60,22 +61,18 @@ const HeroSection = () => {
                     transition={{ duration: 0.5, delay: 0.8 }}
                     className="flex flex-col md:flex-row gap-4 justify-center items-center"
                 >
-                    <motion.a
+                    <MagneticButton
                         href="#menu"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-8 py-4 bg-dhaba-orange text-white rounded-full font-bold text-lg shadow-lg hover:shadow-dhaba-orange/40 transition-shadow cursor-pointer inline-block"
+                        className="px-8 py-4 bg-dhaba-orange text-white rounded-full font-bold text-lg shadow-lg hover:shadow-dhaba-orange/40 transition-shadow"
                     >
                         View Menu
-                    </motion.a>
-                    <motion.a
+                    </MagneticButton>
+                    <MagneticButton
                         href="#ambience"
-                        whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-8 py-4 border border-white/20 text-white rounded-full font-bold text-lg backdrop-blur-sm cursor-pointer inline-block"
+                        className="px-8 py-4 border border-white/20 text-white rounded-full font-bold text-lg backdrop-blur-sm"
                     >
                         Our Story
-                    </motion.a>
+                    </MagneticButton>
                 </motion.div>
             </div>
 
