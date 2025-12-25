@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Tilt from "react-parallax-tilt";
 
 const FeaturedMenu = () => {
     const [activeCategory, setActiveCategory] = useState("All");
@@ -109,44 +110,51 @@ const FeaturedMenu = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     {filteredCategories.map((category, idx) => (
-                        <motion.div
+                        <Tilt
                             key={category.title}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
-                            className="bg-dhaba-brown/10 backdrop-blur-sm rounded-2xl p-8 border border-white/5 hover:border-dhaba-orange/20 transition-colors"
+                            tiltMaxAngleX={5}
+                            tiltMaxAngleY={5}
+                            scale={1.02}
+                            transitionSpeed={2500}
+                            className="bg-dhaba-brown/10 backdrop-blur-sm rounded-2xl p-8 border border-white/5 hover:border-dhaba-orange/20 transition-all h-full"
                         >
-                            <div className="flex items-center gap-4 mb-8">
-                                <span className="text-4xl">{category.icon}</span>
-                                <h3 className="font-display text-2xl text-dhaba-amber">{category.title}</h3>
-                            </div>
-
                             <motion.div
-                                variants={containerVariants}
-                                initial="hidden"
-                                whileInView="visible"
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="space-y-6"
+                                transition={{ delay: idx * 0.1 }}
                             >
-                                {category.items.map((item, itemIdx) => (
-                                    <motion.div
-                                        key={itemIdx}
-                                        variants={itemVariants}
-                                        className="group"
-                                    >
-                                        <div className="flex justify-between items-baseline">
-                                            <h4 className="text-lg font-medium text-white/90 group-hover:text-dhaba-orange transition-colors">
-                                                {item.name}
-                                            </h4>
-                                        </div>
-                                        <p className="text-white/50 text-sm mt-1 group-hover:text-white/70 transition-colors">
-                                            {item.desc}
-                                        </p>
-                                    </motion.div>
-                                ))}
+                                <div className="flex items-center gap-4 mb-8">
+                                    <span className="text-4xl">{category.icon}</span>
+                                    <h3 className="font-display text-2xl text-dhaba-amber">{category.title}</h3>
+                                </div>
+
+                                <motion.div
+                                    variants={containerVariants}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                    className="space-y-6"
+                                >
+                                    {category.items.map((item, itemIdx) => (
+                                        <motion.div
+                                            key={itemIdx}
+                                            variants={itemVariants}
+                                            className="group"
+                                        >
+                                            <div className="flex justify-between items-baseline">
+                                                <h4 className="text-lg font-medium text-white/90 group-hover:text-dhaba-orange transition-colors">
+                                                    {item.name}
+                                                </h4>
+                                            </div>
+                                            <p className="text-white/50 text-sm mt-1 group-hover:text-white/70 transition-colors">
+                                                {item.desc}
+                                            </p>
+                                        </motion.div>
+                                    ))}
+                                </motion.div>
                             </motion.div>
-                        </motion.div>
+                        </Tilt>
                     ))}
                 </div>
             </div>
