@@ -29,7 +29,7 @@ const InteractiveGallery = () => {
 
     return (
         <section id="gallery" className="py-20 bg-neutral-900 overflow-hidden">
-            <div className="container mx-auto px-6 mb-12 flex justify-between items-end">
+            <div className="container mx-auto px-6 mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
                 <div>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
@@ -90,7 +90,7 @@ const InteractiveGallery = () => {
                 <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-neutral-900 to-transparent z-10" />
 
                 <motion.div
-                    className="flex gap-8 w-max"
+                    className="flex gap-4 md:gap-8 w-max"
                     animate={{ x: "-50%" }}
                     transition={{
                         duration: 40,
@@ -102,7 +102,7 @@ const InteractiveGallery = () => {
                     {marqueeImages.map((src, index) => (
                         <div
                             key={index}
-                            className="relative h-[400px] w-[600px] shrink-0 rounded-2xl overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105"
+                            className="relative h-[250px] w-[350px] md:h-[400px] md:w-[600px] shrink-0 rounded-2xl overflow-hidden shadow-2xl grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105"
                         >
                             <img
                                 src={src}
